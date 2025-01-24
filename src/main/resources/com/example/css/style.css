@@ -7,6 +7,7 @@
 
 /* Botones */
 .button {
+    -fx-size: 10;
     -fx-background-color: #6c63ff;
     -fx-text-fill: #ffffff;
     -fx-padding: 10 20;

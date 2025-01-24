@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import java.net.URL?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.12"
-            fx:controller="com.example.recetas.controller.LoginController">
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.recetas.controller.LoginController">
 
     <stylesheets>
         <URL value="@../css/style.css" />
     </stylesheets>
 
     <children>
-        <TextField fx:id="fieldNombre" layoutX="100" layoutY="50" promptText="Nombre de usuario"/>
-        <PasswordField fx:id="fieldContrasena" layoutX="100" layoutY="100" promptText="Contraseña"/>
-        <Button layoutX="100" layoutY="150" onAction="#onLoginButtonClick" text="Iniciar sesión"/>
-        <Button fx:id="crearCuenta" layoutX="200" layoutY="150" onAction="#onRegisterButtonClick" text="Crear cuenta"/>
+        <TextField fx:id="fieldNombre" layoutX="100" layoutY="50" promptText="Nombre de usuario" />
+        <PasswordField fx:id="fieldContrasena" layoutX="100" layoutY="100" promptText="Contraseña" />
+        <Button layoutX="63.0" layoutY="150.0" onAction="#onLoginButtonClick" prefHeight="36.0" prefWidth="126.0" text="Iniciar sesión" />
+        <Button fx:id="crearCuenta" layoutX="200" layoutY="150" onAction="#onRegisterButtonClick" text="Crear cuenta" />
+      <Label layoutX="103.0" prefHeight="34.0" prefWidth="177.0" text="INICIO DE SESIÓN" />
     </children>
 </AnchorPane>

@@ -4,7 +4,11 @@ public enum Constantes {
     PAGINA_INICIAL("main-view.fxml"),
     PAGINA_SEGUNDA_PANTALLA("add-data-view.fxml"),
     TITULO_PAGINA_INICIAL("Página Inicial"),
-    TITULO_SEGUNDA_PANTALLA("Página Segunda");
+    TITULO_SEGUNDA_PANTALLA("Página Segunda"),
+    PAGINA_LOGIN("login-view.fxml"),
+    TITULO_PAGINA_LOGIN("Pagina Login"),
+    PAGINA_REGISTER("register-view.fxml"),
+    TITULO_PAGINA_REGISTER("Pagina Registro");
 
     private final String descripcion;
 

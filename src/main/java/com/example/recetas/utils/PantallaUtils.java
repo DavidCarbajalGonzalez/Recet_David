@@ -29,6 +29,4 @@ public class PantallaUtils {
         //DEVUELVE EL STAGE PARA PODER SER REUTILIZADO EN OTRA PANTALLA POR EJEMPLO.
         return stageAhora;
     }
-
-
 }

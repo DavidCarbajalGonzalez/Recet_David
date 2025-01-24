@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Button?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.recetas.controller.RegisterController">
+    <children>
+        <TextField fx:id="fieldNombre" layoutX="100" layoutY="50" promptText="Nombre de usuario" />
+        <PasswordField fx:id="fieldContrasena" layoutX="100" layoutY="100" promptText="Contraseña" />
+        <Button text="Registrar" layoutX="100" layoutY="150" onAction="#onRegisterButtonClick" />
+        <Button text="Volver" layoutX="200" layoutY="150" onAction="#onBackButtonClick" />
+    </children>
+</AnchorPane>
+

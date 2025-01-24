@@ -19,11 +19,7 @@ public class PantallaUtils {
         URL cssUrl = Main.class.getResource("src/resources/css/styles.css");
         if (cssUrl != null) {
             scene.getStylesheets().add(cssUrl.toExternalForm());
-        } else {
-            System.err.println("Archivo CSS no encontrado.");
         }
-
-
 
         stage.setTitle(titulo);
         stage.setScene(scene);

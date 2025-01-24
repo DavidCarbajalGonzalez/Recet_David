@@ -6,16 +6,17 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 
 public class PantallaUtils {
 
+    //Metodo que muestra las pantallas
     public FXMLLoader showEstaPantalla(Stage stage, String vista, String titulo, int ancho, int alto) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(vista));
         Scene scene = new Scene(fxmlLoader.load(), ancho, alto);
 
+        // Aplicamos css
         URL cssUrl = Main.class.getResource("src/resources/css/styles.css");
         if (cssUrl != null) {
             scene.getStylesheets().add(cssUrl.toExternalForm());
@@ -27,6 +28,7 @@ public class PantallaUtils {
         return fxmlLoader;
     }
 
+    //Metodo que cierra las pantallas
     public Stage cerrarEstaPantalla(Button botonDelAction) {
         //OBTENEMOS EL STAGE DE LA PANTALLA ACTUAL, A PARTIR DEL BOTÓN QUE SE ACCIONA
         Stage stageAhora = (Stage) botonDelAction.getScene().getWindow();

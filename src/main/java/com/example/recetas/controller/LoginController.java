@@ -37,7 +37,7 @@ public class LoginController {
         return controller;
     }
 
-
+    // Boton para acceder a la aplicacion
     @FXML
     void onLoginButtonClick(ActionEvent event) {
         String nombre = fieldNombre.getText();
@@ -61,6 +61,7 @@ public class LoginController {
         }
     }
 
+    // Boton de registrarse
     @FXML
     void onRegisterButtonClick(ActionEvent event) {
         try {

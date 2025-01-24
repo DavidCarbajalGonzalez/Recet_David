@@ -22,6 +22,7 @@ public class RegisterController {
     @FXML
     private PasswordField fieldContrasena;
 
+    // Boton de confirmacion de registro
     @FXML
     void onRegisterButtonClick(ActionEvent event) {
         String nombre = fieldNombre.getText();
@@ -46,6 +47,7 @@ public class RegisterController {
         }
     }
 
+    // Boton de regreso a la pantalla de login
     @FXML
     void onBackButtonClick(ActionEvent event) {
         try {
@@ -64,6 +66,7 @@ public class RegisterController {
         alert.showAndWait();
     }
 
+    // Metodo que muestra las pantallas
     public RegisterController showEstaPantalla(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new PantallaUtils().showEstaPantalla(stage, Constantes.PAGINA_REGISTER.getDescripcion(), Constantes.TITULO_PAGINA_REGISTER.getDescripcion(), 550, 400);
         //OBTENER EL CONTROLADOR DE ESTA VENTANA, PARA PODER REFRESCAR DATOS DE COMPONENTES

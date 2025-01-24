@@ -40,7 +40,7 @@ public class AddDataController {
     }
 
     public AddDataController showEstaPantalla(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new PantallaUtils().showEstaPantalla(stage, Constantes.PAGINA_SEGUNDA_PANTALLA.getDescripcion(),Constantes.TITULO_SEGUNDA_PANTALLA.getDescripcion(),550,400);
+        FXMLLoader fxmlLoader = new PantallaUtils().showEstaPantalla(stage, Constantes.PAGINA_SEGUNDA_PANTALLA.getDescripcion(), Constantes.TITULO_SEGUNDA_PANTALLA.getDescripcion(), 550, 400);
         //OBTENER EL CONTROLADOR DE ESTA VENTANA, PARA PODER REFRESCAR DATOS DE COMPONENTES
         AddDataController controller = fxmlLoader.getController();
 

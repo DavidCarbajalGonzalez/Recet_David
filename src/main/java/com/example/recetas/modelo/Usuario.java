@@ -1,7 +1,6 @@
 package com.example.recetas.modelo;
 
 
-
 public class Usuario {
     private String nombre;
     private String contrasena;

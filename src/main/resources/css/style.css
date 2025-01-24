@@ -1,0 +1,115 @@
+/* Estilo general */
+.root {
+    -fx-font-family: 'Arial', sans-serif;
+    -fx-font-size: 14px;
+    -fx-background-color: #f4f4f9;
+}
+
+/* Botones */
+.button {
+    -fx-background-color: #6c63ff;
+    -fx-text-fill: #ffffff;
+    -fx-padding: 10 20;
+    -fx-font-weight: bold;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 5, 0, 0, 2);
+}
+
+.button:hover {
+    -fx-background-color: #4b47d3;
+}
+
+.button:pressed {
+    -fx-background-color: #3936a6;
+}
+
+/* Campos de texto */
+.text-field, .password-field {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #6c63ff;
+    -fx-border-radius: 5;
+    -fx-padding: 8;
+    -fx-font-size: 14px;
+    -fx-prompt-text-fill: #bfbfbf;
+}
+
+.text-field:focused, .password-field:focused {
+    -fx-border-color: #4b47d3;
+    -fx-border-width: 2;
+}
+
+/* Etiquetas */
+.label {
+    -fx-text-fill: #333333;
+    -fx-font-weight: bold;
+}
+
+/* Tabla */
+.table-view {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #dddddd;
+    -fx-border-radius: 5;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #6c63ff;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.table-row-cell {
+    -fx-border-color: #eeeeee;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #d1d0ff;
+}
+
+/* Alertas */
+.dialog-pane {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #6c63ff;
+    -fx-border-radius: 10;
+}
+
+.dialog-pane .content {
+    -fx-font-size: 14px;
+    -fx-text-fill: #333333;
+}
+
+.dialog-pane .header-panel {
+    -fx-background-color: #6c63ff;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 10;
+}
+
+/* Pantalla principal */
+#main-pane {
+    -fx-background-color: #ffffff;
+    -fx-padding: 20;
+    -fx-spacing: 10;
+    -fx-border-color: #dddddd;
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 5);
+}
+
+/* Botón específico para eliminar */
+.button.eliminar {
+    -fx-background-color: #ff6b6b;
+}
+
+.button.eliminar:hover {
+    -fx-background-color: #d84545;
+}
+
+.button.eliminar:pressed {
+    -fx-background-color: #a93131;
+}
+

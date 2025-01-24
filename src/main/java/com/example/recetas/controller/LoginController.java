@@ -29,6 +29,15 @@ public class LoginController {
     static Usuario usuarioRegistrado;
 
 
+    public LoginController showEstaPantalla(Stage stage) throws IOException {
+        FXMLLoader fxmlLoader = new PantallaUtils().showEstaPantalla(stage, Constantes.PAGINA_LOGIN.getDescripcion(), Constantes.TITULO_PAGINA_LOGIN.getDescripcion(), 550, 400);
+        //OBTENER EL CONTROLADOR DE ESTA VENTANA, PARA PODER REFRESCAR DATOS DE COMPONENTES
+        LoginController controller = fxmlLoader.getController();
+
+        return controller;
+    }
+
+
     @FXML
     void onLoginButtonClick(ActionEvent event) {
         String nombre = fieldNombre.getText();
@@ -71,12 +80,5 @@ public class LoginController {
     }
 
 
-    public LoginController showEstaPantalla(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new PantallaUtils().showEstaPantalla(stage, Constantes.PAGINA_LOGIN.getDescripcion(),Constantes.TITULO_PAGINA_LOGIN.getDescripcion(),550,400);
-        //OBTENER EL CONTROLADOR DE ESTA VENTANA, PARA PODER REFRESCAR DATOS DE COMPONENTES
-        LoginController controller = fxmlLoader.getController();
-
-        return controller;
-    }
 }
 

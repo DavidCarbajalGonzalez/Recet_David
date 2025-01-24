@@ -15,6 +15,6 @@
         <PasswordField fx:id="fieldContrasena" layoutX="100" layoutY="100" promptText="Contraseña" />
         <Button layoutX="88.0" layoutY="150.0" onAction="#onRegisterButtonClick" prefHeight="36.0" prefWidth="102.0" text="Registrar" />
         <Button layoutX="203.0" layoutY="150.0" onAction="#onBackButtonClick" prefHeight="36.0" prefWidth="102.0" text="Volver" />
-      <Label layoutX="100.0" layoutY="6.0" prefHeight="34.0" prefWidth="177.0" text="REGISTRO" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="100.0" layoutY="6.0" prefHeight="34.0" prefWidth="177.0" text="REGISTRO" />
     </children>
 </AnchorPane>

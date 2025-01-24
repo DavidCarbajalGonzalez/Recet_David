@@ -4,8 +4,14 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import java.net.URL?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.12"
             fx:controller="com.example.recetas.controller.LoginController">
+
+    <stylesheets>
+        <URL value="@../css/style.css" />
+    </stylesheets>
+
     <children>
         <TextField fx:id="fieldNombre" layoutX="100" layoutY="50" promptText="Nombre de usuario"/>
         <PasswordField fx:id="fieldContrasena" layoutX="100" layoutY="100" promptText="Contraseña"/>

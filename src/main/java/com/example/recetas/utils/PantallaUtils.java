@@ -15,6 +15,16 @@ public class PantallaUtils {
     public FXMLLoader showEstaPantalla(Stage stage, String vista, String titulo, int ancho, int alto) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(vista));
         Scene scene = new Scene(fxmlLoader.load(), ancho, alto);
+
+        URL cssUrl = Main.class.getResource("src/resources/css/styles.css");
+        if (cssUrl != null) {
+            scene.getStylesheets().add(cssUrl.toExternalForm());
+        } else {
+            System.err.println("Archivo CSS no encontrado.");
+        }
+
+
+
         stage.setTitle(titulo);
         stage.setScene(scene);
         stage.show();

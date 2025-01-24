@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" prefHeight="600.0" prefWidth="600.0" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.recetas.controller.Controlador">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+
+    <!-- Etiqueta de bienvenida -->
+    <Label fx:id="welcomeText" text="GESTOR DE RECETAS :)" />
+
+    <!-- Tabla -->
+    <TableView fx:id="tableView" prefHeight="200.0" prefWidth="500.0">
+        <columns>
+            <TableColumn fx:id="nombre" prefWidth="100.0" text="Nombre" />
+            <TableColumn fx:id="ingredientes" prefWidth="100.0" text="Ingredientes" />
+            <TableColumn fx:id="pasos" prefWidth="100.0" text="Pasos" />
+            <TableColumn fx:id="tiempo" prefWidth="100.0" text="Tiempo" />
+            <TableColumn fx:id="dificultad" prefWidth="100.0" text="Dificultad" />
+        </columns>
+    </TableView>
+
+    <Button fx:id="agregarReceta" onAction="#onAddButtonClick" text="Agregar receta" />
+    <Button onAction="#onDeleteButtonClick" text="Borrar receta" />
+
+
+</VBox>

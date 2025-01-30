@@ -1,116 +1,162 @@
-/* Estilo general */
+/* Definir colores principales */
 .root {
-    -fx-font-family: 'Arial', sans-serif;
-    -fx-font-size: 14px;
-    -fx-background-color: #f4f4f9;
+    -fx-background-color: #121212; /* Fondo oscuro */
+    -fx-text-fill: #ffffff; /* Texto blanco */
 }
 
-/* Botones */
+/* Estilo para los contenedores principales */
+.container {
+    -fx-background-color: rgba(255, 255, 255, 0.05);
+    -fx-padding: 20px;
+    -fx-border-radius: 15px;
+    -fx-background-radius: 15px;
+    -fx-effect: dropshadow(gaussian, rgba(255, 215, 0, 0.3), 10, 0.5, 0, 5);
+}
+
+/* Botones elegantes */
 .button {
-    -fx-size: 10;
-    -fx-background-color: #6c63ff;
-    -fx-text-fill: #ffffff;
-    -fx-padding: 10 20;
+    -fx-background-color: #d4af37;
+    -fx-text-fill: #121212;
+    -fx-font-size: 16px;
     -fx-font-weight: bold;
-    -fx-border-radius: 5;
-    -fx-background-radius: 5;
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-effect: dropshadow(gaussian, rgba(255, 215, 0, 0.3), 10, 0.5, 0, 5);
     -fx-cursor: hand;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 5, 0, 0, 2);
+    -fx-transition: all 0.3s;
 }
 
 .button:hover {
-    -fx-background-color: #4b47d3;
-}
-
-.button:pressed {
-    -fx-background-color: #3936a6;
+    -fx-background-color: rgba(255, 215, 0, 0.6);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-effect: dropshadow(gaussian, rgba(255, 215, 0, 0.6), 15, 0.5, 0, 7);
 }
 
 /* Campos de texto */
 .text-field, .password-field {
-    -fx-background-color: #ffffff;
-    -fx-border-color: #6c63ff;
-    -fx-border-radius: 5;
-    -fx-padding: 8;
+    -fx-background-color: transparent;
+    -fx-border-color: #d4af37;
+    -fx-border-width: 2px;
+    -fx-text-fill: #ffffff;
     -fx-font-size: 14px;
-    -fx-prompt-text-fill: #bfbfbf;
+    -fx-padding: 10px;
+    -fx-border-radius: 8px;
 }
 
 .text-field:focused, .password-field:focused {
-    -fx-border-color: #4b47d3;
-    -fx-border-width: 2;
+    -fx-border-color: rgba(255, 215, 0, 0.6);
+    -fx-effect: dropshadow(gaussian, rgba(255, 215, 0, 0.4), 10, 0.5, 0, 5);
 }
 
-/* Etiquetas */
+/* Tarjetas para mostrar recetas */
+.card {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+    -fx-padding: 15px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(255, 215, 0, 0.3), 10, 0.5, 0, 5);
+    -fx-transition: all 0.3s;
+}
+
+.card:hover {
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+    -fx-effect: dropshadow(gaussian, rgba(255, 215, 0, 0.5), 15, 0.5, 0, 7);
+}
+
+/* Etiquetas (Labels) */
 .label {
-    -fx-text-fill: #333333;
+    -fx-text-fill: #d4af37;
+    -fx-font-size: 18px;
     -fx-font-weight: bold;
 }
 
-/* Tabla */
-.table-view {
-    -fx-background-color: #ffffff;
-    -fx-border-color: #dddddd;
-    -fx-border-radius: 5;
-}
-
-.table-view .column-header-background {
-    -fx-background-color: #6c63ff;
-}
-
-.table-view .column-header .label {
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
-}
-
-.table-row-cell {
-    -fx-border-color: #eeeeee;
-}
-
-.table-row-cell:selected {
-    -fx-background-color: #d1d0ff;
-}
-
-/* Alertas */
-.dialog-pane {
-    -fx-background-color: #ffffff;
-    -fx-border-color: #6c63ff;
-    -fx-border-radius: 10;
-}
-
-.dialog-pane .content {
+/* Links elegantes */
+.hyperlink {
+    -fx-text-fill: #d4af37;
     -fx-font-size: 14px;
-    -fx-text-fill: #333333;
 }
 
-.dialog-pane .header-panel {
-    -fx-background-color: #6c63ff;
-    -fx-text-fill: white;
+.hyperlink:hover {
+    -fx-text-fill: rgba(255, 215, 0, 0.6);
+}
+
+/* ----- TABLA GENERAL ----- */
+.table-view {
+    -fx-background-color: #1a1a1a;
+    -fx-border-color: #d4af37;
+    -fx-border-width: 2px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-padding: 5px;
+}
+
+/* ----- ENCABEZADO DE LA TABLA ----- */
+.table-view .column-header-background {
+    -fx-background-color: linear-gradient(to bottom, #ffcc00, #b8860b);
+    -fx-border-radius: 10px 10px 0px 0px;
+    -fx-background-radius: 10px 10px 0px 0px;
+}
+
+/* Texto de los encabezados */
+.table-view .column-header {
+    -fx-background-color: transparent;
+    -fx-font-size: 16px;
     -fx-font-weight: bold;
-    -fx-padding: 10;
+    -fx-text-fill: #FFFFFF;
+    -fx-padding: 10px;
 }
 
-/* Pantalla principal */
-#main-pane {
-    -fx-background-color: #ffffff;
-    -fx-padding: 20;
-    -fx-spacing: 10;
-    -fx-border-color: #dddddd;
-    -fx-border-width: 1;
-    -fx-border-radius: 5;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 5);
+/* ----- CELDAS DE LA TABLA ----- */
+.table-row-cell {
+    -fx-background-color: #252525; /* Gris oscuro */
+    -fx-text-fill: #FFFFFF;
+    -fx-border-color: #444444;
+    -fx-border-width: 0.5px;
 }
 
-/* Botón específico para eliminar */
-.button.eliminar {
-    -fx-background-color: #ff6b6b;
+/* Alternar colores de fila para mayor contraste */
+.table-row-cell:nth-child(even) {
+    -fx-background-color: #333333; /* Un tono más claro */
 }
 
-.button.eliminar:hover {
-    -fx-background-color: #d84545;
+/* Efecto hover (pasar el mouse) */
+.table-row-cell:hover {
+    -fx-background-color: rgba(255, 215, 0, 0.4);
+    -fx-text-fill: #000000; /* Se vuelve negro para mejor lectura */
 }
 
-.button.eliminar:pressed {
-    -fx-background-color: #a93131;
+/* Filas seleccionadas */
+.table-row-cell:selected {
+    -fx-background-color: #ffcc00;
+    -fx-text-fill: #121212;
+    -fx-font-weight: bold;
 }
+
+/* Estilo de cada celda */
+.table-cell {
+    -fx-border-color: #666666;
+    -fx-border-width: 0.5px;
+    -fx-padding: 8px;
+    -fx-alignment: CENTER;
+    -fx-text-fill: #FFFFFF; /* Asegurar que el texto de la celda sea blanco */
+}
+
+/* ----- BARRA DE DESPLAZAMIENTO ----- */
+.scroll-bar {
+    -fx-background-color: #1a1a1a;
+}
+
+/* Botones de la barra de desplazamiento */
+.increment-button, .decrement-button {
+    -fx-background-color: #ffcc00;
+    -fx-border-radius: 5px;
+}
+
+.increment-button:hover, .decrement-button:hover {
+    -fx-background-color: rgba(255, 215, 0, 0.6);
+}
+
 

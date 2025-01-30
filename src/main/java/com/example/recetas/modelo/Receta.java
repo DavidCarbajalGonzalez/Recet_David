@@ -55,4 +55,12 @@ public class Receta {
     public void setDificultad(String dificultad) {
         this.dificultad = dificultad;
     }
+
+    public boolean validarDatos() {
+        return !nombre.isEmpty() &&
+                !ingredientes.isEmpty() &&
+                !pasos.isEmpty() &&
+                !tiempo.isEmpty() &&
+                !dificultad.isEmpty();
+    }
 }

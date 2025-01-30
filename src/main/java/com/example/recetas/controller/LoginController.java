@@ -2,6 +2,7 @@ package com.example.recetas.controller;
 
 import com.example.recetas.constants.Constantes;
 import com.example.recetas.modelo.Usuario;
+import com.example.recetas.utils.AlertUtils;
 import com.example.recetas.utils.PantallaUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -37,19 +38,21 @@ public class LoginController {
         return controller;
     }
 
-    // Boton para acceder a la aplicacion
+    /**
+     * esto va al javadoc
+     * @param event
+     */
     @FXML
     void onLoginButtonClick(ActionEvent event) {
         String nombre = fieldNombre.getText();
         String contrasena = fieldContrasena.getText();
 
         if (usuarioRegistrado == null) {
-            mostrarAlerta("Sin usuario registrado", "Por favor, registre un usuario primero.");
+            AlertUtils.showAlertaWarning("Sin usuario registrado", "Por favor, registre un usuario primero.");
             return;
         }
 
         if (usuarioRegistrado.getNombre().equals(nombre) && usuarioRegistrado.getContrasena().equals(contrasena)) {
-            // Acceder a la aplicación principal
             try {
                 Stage stage = (Stage) fieldNombre.getScene().getWindow();
                 new Controlador().showEstaPantalla(stage);
@@ -57,7 +60,7 @@ public class LoginController {
                 e.printStackTrace();
             }
         } else {
-            mostrarAlerta("Credenciales incorrectas", "El nombre de usuario o la contraseña no son válidos.");
+            AlertUtils.showAlertaWarning("Credenciales incorrectas", "El nombre de usuario o la contraseña no son válidas.");
         }
     }
 
@@ -71,15 +74,5 @@ public class LoginController {
             e.printStackTrace();
         }
     }
-
-    private void mostrarAlerta(String titulo, String mensaje) {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle(titulo);
-        alert.setHeaderText(null);
-        alert.setContentText(mensaje);
-        alert.showAndWait();
-    }
-
-
 }
 

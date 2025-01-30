@@ -3,6 +3,7 @@ package com.example.recetas.controller;
 
 import com.example.recetas.constants.Constantes;
 import com.example.recetas.modelo.Usuario;
+import com.example.recetas.utils.AlertUtils;
 import com.example.recetas.utils.PantallaUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -29,14 +30,14 @@ public class RegisterController {
         String contrasena = fieldContrasena.getText();
 
         if (nombre.isEmpty() || contrasena.isEmpty()) {
-            mostrarAlerta("Campos vacíos", "Por favor, complete todos los campos.");
+            AlertUtils.showAlertaType("Campos vacíos", "Por favor, complete todos los campos.", Alert.AlertType.WARNING);
             return;
         }
 
         // Registrar el usuario en memoria
         LoginController.usuarioRegistrado = new Usuario(nombre, contrasena);
 
-        mostrarAlerta("Registro exitoso", "Usuario registrado correctamente. Ahora puede iniciar sesión.");
+        AlertUtils.showAlertaType("Registro exitoso", "Usuario registrado correctamente. Ahora puede iniciar sesión.", Alert.AlertType.INFORMATION);
 
         // Volver a la pantalla de inicio de sesión
         try {
@@ -56,14 +57,6 @@ public class RegisterController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    private void mostrarAlerta(String titulo, String mensaje) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(titulo);
-        alert.setHeaderText(null);
-        alert.setContentText(mensaje);
-        alert.showAndWait();
     }
 
     // Metodo que muestra las pantallas

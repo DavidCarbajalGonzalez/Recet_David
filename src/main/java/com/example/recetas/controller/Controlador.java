@@ -2,6 +2,7 @@ package com.example.recetas.controller;
 
 import com.example.recetas.constants.Constantes;
 import com.example.recetas.modelo.Receta;
+import com.example.recetas.utils.AlertUtils;
 import com.example.recetas.utils.PantallaUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -74,6 +75,10 @@ public class Controlador {
 
         return controller;
     }
+    public void setDatosReceta(Receta nuevaReceta) {
+        recetaList.add(nuevaReceta);
+    }
+
 
     @FXML
     void onDeleteButtonClick(ActionEvent event) {
@@ -82,31 +87,35 @@ public class Controlador {
 
         // Verificar si hay una receta seleccionada
         if (selectedReceta != null) {
-            // Confirmar con el usuario antes de eliminar
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Confirmación de eliminación");
-            alert.setHeaderText("¿Estás seguro de eliminar esta receta?");
-            alert.setContentText("Una vez eliminada, no se podrá recuperar.");
+            // Crear y mostrar la alerta de confirmación
+            Alert alert = AlertUtils.showAlertaType(
+                    "Confirmación de eliminación",
+                    "¿Estás seguro de eliminar esta receta?\nUna vez eliminada, no se podrá recuperar.",
+                    Alert.AlertType.CONFIRMATION
+            );
 
-            // Mostrar alerta y esperar respuesta
-            Optional<ButtonType> result = alert.showAndWait();
+            Optional<ButtonType> result = alert.showAndWait(); // Esperar respuesta del usuario
+
             if (result.isPresent() && result.get() == ButtonType.OK) {
                 // Eliminar la receta de la lista
                 recetaList.remove(selectedReceta);
             }
         } else {
             // Mostrar alerta si no se ha seleccionado ninguna receta
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("No se ha seleccionado receta");
-            alert.setHeaderText("Por favor, selecciona una receta para eliminar.");
-            alert.showAndWait();
+            AlertUtils.showAlertaWarning(
+                    "No se ha seleccionado receta",
+                    "Por favor, selecciona una receta para eliminar."
+            );
         }
     }
 
+
+
     public void onAddButtonClick(ActionEvent actionEvent) {
         try {
-            Stage stage = (new PantallaUtils()).cerrarEstaPantalla(this.agregarReceta);
-            AddDataController controller = (new AddDataController()).showEstaPantalla(stage);
+            //Stage stage = (new PantallaUtils()).cerrarEstaPantalla(this.agregarReceta);
+            AddDataController controller = (new AddDataController()).showEstaPantalla(new Stage());
+            controller.setControlador(this);
         } catch (Exception e) {
             e.printStackTrace();
         }

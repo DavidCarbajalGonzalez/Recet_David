@@ -25,7 +25,7 @@ public class AlertUtils {
         alert.setTitle(titulo);
         alert.setHeaderText(null);
         alert.setContentText(mensaje);
-        return alert;  // Devuelve la alerta en lugar de solo mostrarla
+        return alert;
     }
 }
 

@@ -31,6 +31,4 @@
 
     <Button fx:id="agregarReceta" onAction="#onAddButtonClick" text="Agregar receta"/>
     <Button onAction="#onDeleteButtonClick" text="Borrar receta"/>
-
-
 </VBox>

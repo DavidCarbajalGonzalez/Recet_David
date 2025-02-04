@@ -13,7 +13,7 @@
     -fx-effect: dropshadow(gaussian, rgba(255, 215, 0, 0.3), 10, 0.5, 0, 5);
 }
 
-/* Botones elegantes */
+/* Botones  */
 .button {
     -fx-background-color: #d4af37;
     -fx-text-fill: #121212;
@@ -66,14 +66,14 @@
     -fx-effect: dropshadow(gaussian, rgba(255, 215, 0, 0.5), 15, 0.5, 0, 7);
 }
 
-/* Etiquetas (Labels) */
+/* Etiquetas */
 .label {
     -fx-text-fill: #d4af37;
     -fx-font-size: 18px;
     -fx-font-weight: bold;
 }
 
-/* Links elegantes */
+/* Links */
 .hyperlink {
     -fx-text-fill: #d4af37;
     -fx-font-size: 14px;
@@ -105,27 +105,26 @@
     -fx-background-color: transparent;
     -fx-font-size: 16px;
     -fx-font-weight: bold;
-    -fx-text-fill: #FFFFFF;
+    -fx-text-fill: #FFFFFF !important;
     -fx-padding: 10px;
 }
 
 /* ----- CELDAS DE LA TABLA ----- */
 .table-row-cell {
-    -fx-background-color: #252525; /* Gris oscuro */
+    -fx-background-color: #252525;
     -fx-text-fill: #FFFFFF;
     -fx-border-color: #444444;
     -fx-border-width: 0.5px;
 }
 
-/* Alternar colores de fila para mayor contraste */
 .table-row-cell:nth-child(even) {
-    -fx-background-color: #333333; /* Un tono más claro */
+    -fx-background-color: #333333;
 }
 
-/* Efecto hover (pasar el mouse) */
+/* Efecto hover*/
 .table-row-cell:hover {
     -fx-background-color: rgba(255, 215, 0, 0.4);
-    -fx-text-fill: #000000; /* Se vuelve negro para mejor lectura */
+    -fx-text-fill: #000000;
 }
 
 /* Filas seleccionadas */
@@ -141,7 +140,7 @@
     -fx-border-width: 0.5px;
     -fx-padding: 8px;
     -fx-alignment: CENTER;
-    -fx-text-fill: #FFFFFF; /* Asegurar que el texto de la celda sea blanco */
+    -fx-text-fill: #FFFFFF;
 }
 
 /* ----- BARRA DE DESPLAZAMIENTO ----- */

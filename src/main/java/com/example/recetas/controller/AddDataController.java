@@ -13,98 +13,71 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
+import static com.example.recetas.controller.Controlador.recetaList;
 
 public class AddDataController {
 
+    private Controlador controlador;  // Variable para almacenar la referencia al controlador principal
+
     @FXML
     private TextField fieldNombre;
-
     @FXML
     private TextField fieldIngredientes;
-
     @FXML
     private TextField fieldPasos;
-
     @FXML
     private TextField fieldTiempo;
-
     @FXML
     private TextField fieldDificultad;
-
     @FXML
     private Button agregar;
 
-    private Controlador controlador;
-
-    public Controlador getControlador() {
-        return controlador;
-    }
-
+    // Método para establecer el controlador principal
     public void setControlador(Controlador controlador) {
         this.controlador = controlador;
     }
 
-    private static Receta nuevaReceta;
-
-    public static Receta getNuevaReceta() {
-        return nuevaReceta;
-    }
+    public static Receta nuevaReceta;
 
     public AddDataController showEstaPantalla(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new PantallaUtils().showEstaPantalla(stage, Constantes.PAGINA_SEGUNDA_PANTALLA.getDescripcion(), Constantes.TITULO_SEGUNDA_PANTALLA.getDescripcion(), 550, 400);
-        //OBTENER EL CONTROLADOR DE ESTA VENTANA, PARA PODER REFRESCAR DATOS DE COMPONENTES
+        FXMLLoader fxmlLoader = new PantallaUtils().showEstaPantalla(stage, Constantes.PAGINA_SEGUNDA_PANTALLA.getDescripcion(), Constantes.TITULO_SEGUNDA_PANTALLA.getDescripcion(), 550, 450);
         AddDataController controller = fxmlLoader.getController();
-
         return controller;
     }
 
-
-    public void onAddButtonClick(ActionEvent actionEvent) throws IOException {
-        Receta nuevaReceta = new Receta(fieldNombre.getText(),
+    public void onAddButtonClick(ActionEvent actionEvent) {
+        // Crear una nueva receta con los datos del formulario
+        Receta nuevaReceta = new Receta(
+                fieldNombre.getText(),
                 fieldIngredientes.getText(),
                 fieldPasos.getText(),
                 fieldTiempo.getText(),
-                fieldDificultad.getText());
+                fieldDificultad.getText()
+        );
 
-        if (nuevaReceta.validarDatos()) { // Llamada al método en el modelo
-            controlador.setDatosReceta(nuevaReceta);
-           new PantallaUtils().cerrarEstaPantalla(agregar);
-        } else {
-            AlertUtils.showAlertaError("Todos los campos son obligatorios.");
+        // Validar que todos los campos estén completos
+        if (!nuevaReceta.validarDatos()) {
+            AlertUtils.showAlertaWarning("Campos incompletos", "Por favor, complete todos los campos.");
+            return;  // Salir del método si algún campo está vacío
         }
+
+        // Guardar la receta en la base de datos
+        Receta.guardar(nuevaReceta);
+
+        // Mostrar mensaje de éxito
+        AlertUtils.showAlertaType("Receta guardada", "La receta ha sido guardada exitosamente.", Alert.AlertType.INFORMATION);
+
+        // Limpiar los campos del formulario
+        fieldNombre.clear();
+        fieldIngredientes.clear();
+        fieldPasos.clear();
+        fieldTiempo.clear();
+        fieldDificultad.clear();
+
+        // Obtener el Stage (ventana actual) y cerrarla
+        Stage stage = (Stage) agregar.getScene().getWindow();  // 'agregar' es el botón de añadir receta
+        stage.close();  // Cierra la ventana
     }
 }
-
-
-
-//        // Comprobaciones para verificar que todos los campos están completos
-//        if (fieldNombre.getText().isEmpty() ||
-//                fieldIngredientes.getText().isEmpty() ||
-//                fieldPasos.getText().isEmpty() ||
-//                fieldTiempo.getText().isEmpty() ||
-//                fieldDificultad.getText().isEmpty()) {
-//
-//            // Mostrar alerta si hay campos vacíos
-//            Alert alert = new Alert(Alert.AlertType.WARNING);
-//            alert.setTitle("Campos vacíos");
-//            alert.setHeaderText("Por favor, complete todos los campos");
-//            alert.setContentText("Todos los campos deben tener información para añadir la receta.");
-//            alert.showAndWait();
-//        } else {
-//            // Crear un nuevo objeto Receta con los datos ingresados
-//            nuevaReceta = new Receta(
-//                    fieldNombre.getText(),
-//                    fieldIngredientes.getText(),
-//                    fieldPasos.getText(),
-//                    fieldTiempo.getText(),
-//                    fieldDificultad.getText()
-//            );
-//
-//            Controlador.recetaList.add(nuevaReceta);
-//
-//            Stage stage = new PantallaUtils().cerrarEstaPantalla(agregar);
-//
-//            //LLAMAMOS A LA PANTALLA INICIAL A LA QUE QUEREMOS VOLVER
-//           new Controlador().showEstaPantalla(stage);
-
-

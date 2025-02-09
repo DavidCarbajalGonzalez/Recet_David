@@ -14,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class LoginController {
 
@@ -26,45 +27,41 @@ public class LoginController {
     @FXML
     private Button crearCuenta;
 
-    // Usuario registrado en memoria
-    static Usuario usuarioRegistrado;
-
-
     public LoginController showEstaPantalla(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new PantallaUtils().showEstaPantalla(stage, Constantes.PAGINA_LOGIN.getDescripcion(), Constantes.TITULO_PAGINA_LOGIN.getDescripcion(), 550, 400);
-        //OBTENER EL CONTROLADOR DE ESTA VENTANA, PARA PODER REFRESCAR DATOS DE COMPONENTES
         LoginController controller = fxmlLoader.getController();
-
         return controller;
     }
 
-    /**
-     * esto va al javadoc
-     * @param event
-     */
     @FXML
     void onLoginButtonClick(ActionEvent event) {
         String nombre = fieldNombre.getText();
         String contrasena = fieldContrasena.getText();
 
-        if (usuarioRegistrado == null) {
-            AlertUtils.showAlertaWarning("Sin usuario registrado", "Por favor, registre un usuario primero.");
-            return;
-        }
-
-        if (usuarioRegistrado.getNombre().equals(nombre) && usuarioRegistrado.getContrasena().equals(contrasena)) {
-            try {
-                Stage stage = (Stage) fieldNombre.getScene().getWindow();
-                new Controlador().showEstaPantalla(stage);
-            } catch (Exception e) {
-                e.printStackTrace();
+        try {
+            if (!Usuario.existeUsuario(nombre)) {
+                AlertUtils.showAlertaWarning("Usuario no registrado", "Este usuario no está registrado. Por favor, regístrese primero.");
+                return;
             }
-        } else {
-            AlertUtils.showAlertaWarning("Credenciales incorrectas", "El nombre de usuario o la contraseña no son válidas.");
+
+            // Verificar la contraseña ingresada con la almacenada
+            boolean contrasenaCorrecta = Usuario.verificarContrasena(nombre, contrasena);
+            if (!contrasenaCorrecta) {
+                AlertUtils.showAlertaWarning("Credenciales incorrectas", "El nombre de usuario o la contraseña no son válidos.");
+                return;
+            }
+
+            // Si la contraseña es correcta
+            AlertUtils.showAlertaType("Inicio de sesión exitoso", "Bienvenido de nuevo, " + nombre + "!", Alert.AlertType.INFORMATION);
+            Stage stage = (Stage) fieldNombre.getScene().getWindow();
+            new Controlador().showEstaPantalla(stage);
+
+        } catch (SQLException | IOException e) {
+            e.printStackTrace();
+            AlertUtils.showAlertaError("Error de conexión", "Hubo un problema al verificar las credenciales.");
         }
     }
 
-    // Boton de registrarse
     @FXML
     void onRegisterButtonClick(ActionEvent event) {
         try {
@@ -75,4 +72,3 @@ public class LoginController {
         }
     }
 }
-

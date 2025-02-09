@@ -37,18 +37,6 @@ public class Controlador {
     @FXML
     private TableColumn<Receta, String> dificultad;
 
-    // Campos de entrada
-    @FXML
-    private TextField fieldNombre;
-    @FXML
-    private TextField fieldIngredientes;
-    @FXML
-    private TextField fieldPasos;
-    @FXML
-    private TextField fieldTiempo;
-    @FXML
-    private TextField fieldDificultad;
-
     // Lista de datos para la tabla
     static ObservableList<Receta> recetaList = FXCollections.observableArrayList();
 
@@ -57,7 +45,9 @@ public class Controlador {
     @FXML
     private Button cerrarApp;
 
-
+    public ObservableList<Receta> getRecetaList() {
+        return recetaList;
+    }
 
     @FXML
     public void initialize() {
@@ -88,41 +78,32 @@ public class Controlador {
     }
 
     public void setDatosReceta(Receta nuevaReceta) {
-        recetaList.add(nuevaReceta);
+        recetaList.add(nuevaReceta);  // Agrega la receta directamente a la lista observable
     }
 
     @FXML
     void onDeleteButtonClick(ActionEvent event) {
-        // Obtener la receta seleccionada de la tabla
         Receta selectedReceta = tableView.getSelectionModel().getSelectedItem();
-
-        // Verificar si hay una receta seleccionada
         if (selectedReceta != null) {
-            // Crear y mostrar la alerta de confirmación
             Alert alert = AlertUtils.showAlertaType(
                     "Confirmación de eliminación",
                     "¿Estás seguro de eliminar esta receta?\nUna vez eliminada, no se podrá recuperar.",
                     Alert.AlertType.CONFIRMATION
             );
 
-            Optional<ButtonType> result = alert.showAndWait(); // Esperar respuesta del usuario
-
+            Optional<ButtonType> result = alert.showAndWait();
             if (result.isPresent() && result.get() == ButtonType.OK) {
-                // Eliminar la receta de la base de datos
                 selectedReceta.eliminar();
-                // Eliminar la receta de la lista en memoria
                 recetaList.remove(selectedReceta);
                 AlertUtils.showAlertaType("Receta eliminada", "La receta ha sido eliminada correctamente.", Alert.AlertType.INFORMATION);
             }
         } else {
-            // Mostrar alerta si no se ha seleccionado ninguna receta
             AlertUtils.showAlertaWarning(
                     "No se ha seleccionado receta",
                     "Por favor, selecciona una receta para eliminar."
             );
         }
     }
-
 
     public void onAddButtonClick(ActionEvent actionEvent) {
         try {
@@ -132,18 +113,16 @@ public class Controlador {
             e.printStackTrace();
         }
     }
+
     @FXML
     void onCloseButtonClick(ActionEvent event) {
-        // Aquí puedes llamar a un método para cerrar la base de datos
         try {
-            Connection conn = DatabaseConnection.connect(); // Obtener la conexión
-            DatabaseConnection.closeConnection(conn); // Cerrar la conexión
+            Connection conn = DatabaseConnection.connect();
+            DatabaseConnection.closeConnection(conn);
         } catch (SQLException e) {
             e.printStackTrace();
             AlertUtils.showAlertaError("Error al cerrar la base de datos", "Hubo un problema al cerrar la conexión.");
         }
-
-        // Cierra la aplicación
         Platform.exit();
     }
 }

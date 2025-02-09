@@ -60,7 +60,7 @@ public class AddDataController {
         // Validar que todos los campos estén completos
         if (!nuevaReceta.validarDatos()) {
             AlertUtils.showAlertaWarning("Campos incompletos", "Por favor, complete todos los campos.");
-            return;  // Salir del método si algún campo está vacío
+            return;
         }
 
         // Guardar la receta en la base de datos
@@ -69,6 +69,11 @@ public class AddDataController {
         // Mostrar mensaje de éxito
         AlertUtils.showAlertaType("Receta guardada", "La receta ha sido guardada exitosamente.", Alert.AlertType.INFORMATION);
 
+        // **Actualiza la lista observable en el controlador principal**
+        if (controlador != null) {
+            controlador.getRecetaList().add(nuevaReceta);
+        }
+
         // Limpiar los campos del formulario
         fieldNombre.clear();
         fieldIngredientes.clear();
@@ -76,8 +81,9 @@ public class AddDataController {
         fieldTiempo.clear();
         fieldDificultad.clear();
 
-        // Obtener el Stage (ventana actual) y cerrarla
-        Stage stage = (Stage) agregar.getScene().getWindow();  // 'agregar' es el botón de añadir receta
-        stage.close();  // Cierra la ventana
+        // Cerrar la ventana actual
+        Stage stage = (Stage) agregar.getScene().getWindow();
+        stage.close();
     }
+
 }

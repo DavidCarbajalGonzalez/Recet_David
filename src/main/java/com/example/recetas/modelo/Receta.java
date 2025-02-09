@@ -92,6 +92,7 @@ public class Receta {
     }
 
 
+
     // Método para eliminar una receta de la base de datos
     public void eliminar() {
         String query = "DELETE FROM receta WHERE nombre = ? AND ingredientes = ? AND pasos = ? AND tiempo = ? AND dificultad = ?";

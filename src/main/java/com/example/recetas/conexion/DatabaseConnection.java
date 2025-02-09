@@ -6,15 +6,24 @@ import java.sql.SQLException;
 
 public class DatabaseConnection {
 
+    private static Connection connection = null;
+
     public static Connection connect() throws SQLException {
-        try {
-            // Asegúrate de que la ruta de la base de datos esté bien configurada
-            String url = "jdbc:sqlite:data/UserRecets.db";  // Cambia la ruta según corresponda
-            Connection conn = DriverManager.getConnection(url);
-            return conn;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw new SQLException("Error al conectar con la base de datos.");
+        if (connection == null || connection.isClosed()) {
+            String url = "jdbc:sqlite:data/UserRecets.db";
+            connection = DriverManager.getConnection(url);
+        }
+        return connection;
+    }
+
+    public static void closeConnection() {
+        if (connection != null) {
+            try {
+                connection.close();
+                connection = null;
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 

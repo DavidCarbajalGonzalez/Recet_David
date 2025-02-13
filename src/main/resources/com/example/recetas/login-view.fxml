@@ -1,20 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.recetas.controller.LoginController">
+<VBox prefHeight="230.0" prefWidth="387.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.recetas.controller.LoginController">
 
     <stylesheets>
         <URL value="@../css/style.css" />
     </stylesheets>
 
+
+
     <children>
-        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="103.0" prefHeight="34.0" prefWidth="177.0" text="INICIO DE SESIÓN" />
-        <TextField fx:id="fieldNombre" layoutX="100" layoutY="50" promptText="Nombre de usuario" />
-        <PasswordField fx:id="fieldContrasena" layoutX="100" layoutY="100" promptText="Contraseña" />
-        <Button layoutX="63.0" layoutY="150.0" onAction="#onLoginButtonClick" prefHeight="36.0" prefWidth="126.0" text="Iniciar sesión" />
-        <Button fx:id="crearCuenta" layoutX="200" layoutY="150" onAction="#onRegisterButtonClick" text="Crear cuenta" />
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+         <children>
+                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="34.0" prefWidth="177.0" text="INICIO DE SESIÓN">
+               <VBox.margin>
+                  <Insets bottom="50.0" />
+               </VBox.margin></Label>
+                <TextField fx:id="fieldNombre" alignment="CENTER" prefHeight="44.0" prefWidth="316.0" promptText="Nombre de usuario">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="60.0" right="60.0" />
+               </VBox.margin></TextField>
+                <PasswordField fx:id="fieldContrasena" alignment="CENTER" promptText="Contraseña">
+               <VBox.margin>
+                  <Insets left="60.0" right="60.0" />
+               </VBox.margin></PasswordField>
+         </children>
+      </VBox>
+        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+            <children>
+                <Button onAction="#onLoginButtonClick" prefHeight="45.0" prefWidth="155.0" text="Iniciar sesión">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin></Button>
+                <Button fx:id="crearCuenta" onAction="#onRegisterButtonClick" prefHeight="45.0" prefWidth="156.0" text="Crear cuenta" />
+            </children>
+        </HBox>
     </children>
-</AnchorPane>
+</VBox>

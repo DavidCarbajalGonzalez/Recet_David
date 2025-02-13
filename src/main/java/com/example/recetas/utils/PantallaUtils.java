@@ -16,7 +16,7 @@ public class PantallaUtils {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(vista));
         Scene scene = new Scene(fxmlLoader.load(), ancho, alto);
 
-        // Aplicamos css
+        // Aplicamos el CSS
         URL cssUrl = Main.class.getResource("src/resources/css/styles.css");
         if (cssUrl != null) {
             scene.getStylesheets().add(cssUrl.toExternalForm());
@@ -24,9 +24,14 @@ public class PantallaUtils {
 
         stage.setTitle(titulo);
         stage.setScene(scene);
+
+        // CENTRAR LA VENTANA
+        stage.centerOnScreen(); // <- Asegura que la ventana se centre en la pantalla
+
         stage.show();
         return fxmlLoader;
     }
+
 
     //Metodo que cierra las pantallas
     public Stage cerrarEstaPantalla(Button botonDelAction) {

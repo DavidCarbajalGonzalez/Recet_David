@@ -2,6 +2,7 @@
 .root {
     -fx-background-color: #121212; /* Fondo oscuro */
     -fx-text-fill: #ffffff; /* Texto blanco */
+    -fx-alignment: center;
 }
 
 /* Estilo para los contenedores principales */
@@ -10,7 +11,8 @@
     -fx-padding: 20px;
     -fx-border-radius: 15px;
     -fx-background-radius: 15px;
-    -fx-effect: dropshadow(gaussian, rgba(255, 215, 0, 0.3), 10, 0.5, 0, 5);
+    -fx-effect: drop shadow(gaussian, rgba(255, 215, 0, 0.3), 10, 0.5, 0, 5);
+    -fx-alignment: center;
 }
 
 /* Botones  */

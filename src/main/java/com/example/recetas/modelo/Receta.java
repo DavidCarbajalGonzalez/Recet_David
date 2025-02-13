@@ -127,3 +127,4 @@ public class Receta {
                 !dificultad.trim().isEmpty();
     }
 }
+

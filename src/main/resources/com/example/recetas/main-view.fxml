@@ -31,5 +31,5 @@
 
     <Button fx:id="agregarReceta" onAction="#onAddButtonClick" text="Agregar receta" />
     <Button onAction="#onDeleteButtonClick" text="Borrar receta" />
-   <Button mnemonicParsing="false" onAction="#onCloseButtonClick" text="Cerrar programa" />
+    <Button mnemonicParsing="false" onAction="#onCloseButtonClick" text="Cerrar programa" />
 </VBox>

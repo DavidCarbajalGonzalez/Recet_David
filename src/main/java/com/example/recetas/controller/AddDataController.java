@@ -85,5 +85,4 @@ public class AddDataController {
         Stage stage = (Stage) agregar.getScene().getWindow();
         stage.close();
     }
-
 }
